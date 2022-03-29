@@ -1,0 +1,39 @@
+<div id="tab_element">
+    <ul class="tabs-horiz">
+        <?php
+        //nếu tồn tại Category thì lặp => get dữ liệu ra
+        if (count($block->getAllPortfolioCategory()) > 0): ?>
+            <?php foreach ($block->getAllPortfolioCategory() as $portfolioCate): ?>
+                <li>
+                    <a href="#tab<?= $portfolioCate['portfolio_category_id'] ?>_content">
+                        <span>
+                            <?= $portfolioCate['portfolio_category_name'] ?>
+                        </span>
+                    </a>
+                </li>
+            <?php endforeach; ?>
+        <?php endif; ?>
+    </ul>
+</div>
+<div id="tab_element_content">
+    <?php
+    if (count($block->getAllPortfolioCategory()) > 0): ?>
+        <?php foreach ($block->getAllPortfolioCategory() as $portfolioCate): ?>
+            <div id="tab<?= $portfolioCate['portfolio_category_id'] ?>_content">
+                <div class="portfolio_cate_list">
+                    <?php
+                    //lấy tất cả Portfolio thuộc Categeory hiện tại, lặp từng Portfolio
+                    foreach ($block->getAllPortfolioByCategory($portfolioCate['portfolio_category_id']) as $portfolioByCate):?>
+                        <a style ="width: <?= 100 / $block->getConfigValue('portfolio/portfolio_config_group/total_portfolio')-2 ?>% " href="<?= $block->getUrl('portfolio/portfolio/portfolioitem',['id' => $portfolioByCate->getPortfolioId()]) ?>" class="portfolio_cate_item">
+                            <img
+                                src="<?= $block->getMediaUrl() . 'encentura/tmp/feature/' . $portfolioByCate->getThumbnail() ?>"
+                                width="100%">
+                        </a>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    <?php endif; ?>
+</div>
+
+

@@ -1,0 +1,47 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<!-- ko foreach: { data: elems, as: 'element' } -->
+<!-- ko if: hasTemplate() -->
+<!-- ko template: getTemplate() --><!-- /ko -->
+<!-- /ko -->
+<!-- /ko -->
+<div class="note" style="display: flex; justify-content: flex-end">
+    <a class="action popup-open" data-bind="mageInit: {'Ecentura_Portfolio/js/popup':{}}" href="#">
+        <span><!-- ko i18n: 'Please, click to open popup.'--><!-- /ko --></span>
+    </a>
+</div>
+<div id="popup" style="display: none;">
+    <div data-bind="html: window.checkoutConfig.content_checkout"></div>
+</div>
+
+<!--<script>-->
+<!--    require(-->
+<!--        [-->
+<!--            'jquery',-->
+<!--            'Magento_Ui/js/modal/modal'-->
+<!--        ],-->
+<!--        function ($, modal) {-->
+<!--            var options = {-->
+<!--                type: 'popup',-->
+<!--                responsive: true,-->
+<!--                innerScroll: true,-->
+<!--                title: 'popup mpdal title',-->
+<!--                buttons: [{-->
+<!--                    text: $.mage.__('Continue'),-->
+<!--                    class: '',-->
+<!--                    click: function () {-->
+<!--                        this.closeModal();-->
+<!--                    }-->
+<!--                }]-->
+<!--            };-->
+<!--            var popup = modal(options, $('#myModel'));-->
+<!--            $("#openModel").on("click", function () {-->
+<!--                $('#myModel').modal('openModal');-->
+<!--            });-->
+<!--        }-->
+<!--    );-->
+<!--</script>-->

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Ecentura_Portfolio::portfolio" title="Portfolio" module="Ecentura_Portfolio" sortOrder="51"
+             resource="Ecentura_Portfolio::portfolio" dependsOnModule="Ecentura_Portfolio"/>
+        <add id="Ecentura_Portfolio::category" title="Portfolio Category" module="Ecentura_Portfolio" sortOrder="10"
+             action="ecentura_portfolio/portfoliocategory/index" resource="Ecentura_Portfolio::list"
+             parent="Ecentura_Portfolio::portfolio"/>
+
+        <add id="Ecentura_Portfolio::entity" title="Portfolio" module="Ecentura_Portfolio" sortOrder="20"
+             action="ecentura_portfolio/portfolio/index" resource="Ecentura_Portfolio::list"
+             parent="Ecentura_Portfolio::portfolio"/>
+
+        <add id="Ecentura_Portfolio::comment" title="Portfolio Comment" module="Ecentura_Portfolio" sortOrder="30"
+             action="ecentura_portfolio/comment/index" resource="Ecentura_Portfolio::comment"
+             parent="Ecentura_Portfolio::portfolio"/>
+
+        <add id="Ecentura_Portfolio::portfolio_configuration" title="Portfolio Configuration" module="Ecentura_Portfolio"
+             sortOrder="99" parent="Ecentura_Portfolio::entity"
+             action="adminhtml/system_config/edit/section/helloworld"
+             resource="Ecentura_Portfolio::portfolio_configuration"/>
+    </menu>
+</config>

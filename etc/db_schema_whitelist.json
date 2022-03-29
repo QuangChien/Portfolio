@@ -1,0 +1,42 @@
+{
+    "portfolio_category": {
+        "column": {
+            "portfolio_category_id": true,
+            "portfolio_category_name": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    },
+    "portfolio": {
+        "column": {
+            "portfolio_id": true,
+            "thumbnail": true,
+            "image": true,
+            "client": true,
+            "project": true,
+            "skill": true,
+            "status": true,
+            "content": true,
+            "portfolio_category_id": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "PORTFOLIO_PORTFOLIO_CTGR_ID_PORTFOLIO_CTGR_PORTFOLIO_CTGR_ID": true
+        }
+    },
+    "portfolio_comment": {
+        "column": {
+            "comment_id": true,
+            "content": true,
+            "created_at": true,
+            "portfolio_id": true,
+            "customer_id": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "PORTFOLIO_COMMENT_PORTFOLIO_ID_PORTFOLIO_PORTFOLIO_ID": true,
+            "PORTFOLIO_COMMENT_CUSTOMER_ID_CUSTOMER_ENTITY_ENTITY_ID": true
+        }
+    }
+}

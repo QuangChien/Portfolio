@@ -1,0 +1,48 @@
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="portfolio_category">
+        <column xsi:type="int" name="portfolio_category_id" padding="10" unsigned="true" nullable="false"
+                identity="true" comment="Portfolio Category Id"/>
+        <column xsi:type="varchar" name="portfolio_category_name" nullable="false" length="255"
+                comment="Portfolio Category Name"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="portfolio_category_id"/>
+        </constraint>
+    </table>
+
+    <table name="portfolio">
+        <column xsi:type="int" name="portfolio_id" padding="10" unsigned="true" nullable="false" identity="true"
+                comment="Portfolio Id"/>
+        <column xsi:type="varchar" name="thumbnail" nullable="false" length="500" comment="Thumbnail"/>
+        <column xsi:type="varchar" name="image" nullable="false" length="500" comment="Image"/>
+        <column xsi:type="varchar" name="client" nullable="false" length="255" comment="Client"/>
+        <column xsi:type="varchar" name="project" nullable="false" length="255" comment="Project"/>
+        <column xsi:type="varchar" name="skill" nullable="false" length="255" comment="Skill"/>
+        <column xsi:type="smallint" name="status" identity="false" nullable="false" comment="Status" default="1"/>
+        <column xsi:type="mediumtext" name="content" nullable="true" comment="Content"/>
+        <column xsi:type="int" name="portfolio_category_id" unsigned="true" nullable="false" comment="Portfolio Category Id"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="portfolio_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="COMPANY_CREDIT_COMPANY_ID_COMPANY_ENTITY_ID" table="portfolio"
+                    column="portfolio_category_id" referenceTable="portfolio_category" referenceColumn="portfolio_category_id" onDelete="CASCADE"/>
+    </table>
+
+    <table name="portfolio_comment">
+        <column xsi:type="int" name="comment_id" padding="10" unsigned="true" nullable="false" identity="true"
+                comment="Portfolio Comment Id"/>
+        <column xsi:type="mediumtext" name="content" nullable="true" comment="Comment Content"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Creation Time"/>
+        <column xsi:type="int" name="portfolio_id" unsigned="true" nullable="false" comment="Portfolio Id"/>
+        <column xsi:type="int" name="customer_id" unsigned="true" nullable="false"
+                comment="Customer ID"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="comment_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="PORTFOLIO_ID_COMMENT_ID" table="portfolio_comment"
+                    column="portfolio_id" referenceTable="portfolio" referenceColumn="portfolio_id" onDelete="CASCADE"/>
+        <constraint xsi:type="foreign" referenceId="CUSTOMER_ID_COMMENT_ID" table="portfolio_comment"
+                    column="customer_id" referenceTable="customer_entity" referenceColumn="entity_id" onDelete="CASCADE"/>
+    </table>
+</schema>

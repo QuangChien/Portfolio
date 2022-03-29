@@ -1,0 +1,65 @@
+<div id="tab_element">
+    <ul class="tabs-horiz">
+        <?php
+        if (count($block->getAllPortfolioCategory()) > 0): ?>
+            <?php foreach ($block->getAllPortfolioCategory() as $portfolioCate): ?>
+                <li>
+                    <a href="#tab<?= $portfolioCate['portfolio_category_id'] ?>_content">
+                        <span>
+                            <?= $portfolioCate['portfolio_category_name'] ?>
+                        </span>
+                    </a>
+                </li>
+            <?php endforeach; ?>
+        <?php endif; ?>
+    </ul>
+</div>
+<div id="tab_element_content">
+    <?php
+    if (count($block->getAllPortfolioCategory()) > 0): ?>
+        <?php foreach ($block->getAllPortfolioCategory() as $portfolioCate): ?>
+            <div id="tab<?= $portfolioCate['portfolio_category_id'] ?>_content">
+                <div
+                    class="portfolio_cate_list <?= $block->getData('is_show_slider') == "true" ? 'owl-carousel owl-theme' : '' ?>">
+                    <?php
+                    foreach ($block->getAllPortfolioByCategory($portfolioCate['portfolio_category_id']) as $portfolioByCate):?>
+                        <a class="item"
+                           style="width: <?= $block->getData('is_show_slider') == "false" ? '24%' : '' ?>; display: inline-block"
+                           href="<?= $block->getUrl('portfolio/portfolio/portfolioitem', ['id' => $portfolioByCate->getPortfolioId()]) ?>"
+                           class="portfolio_cate_item">
+                            <img
+                                src="<?= $block->getMediaUrl() . 'encentura/tmp/feature/' . $portfolioByCate->getThumbnail() ?>"
+                                width="100%">
+                        </a>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    <?php endif; ?>
+</div>
+
+<script type="text/javascript" xml="space">
+    require([
+        'jquery',
+        'owlcarousel'
+    ], function ($) {
+        $(document).ready(function () {
+            $('.owl-carousel ').owlCarousel({
+                loop: true,
+                margin: 3,
+                nav: false,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 3
+                    },
+                    1000: {
+                        items: 5
+                    }
+                }
+            })
+        });
+    });
+</script>

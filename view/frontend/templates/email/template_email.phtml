@@ -1,0 +1,15 @@
+<table style="width: 100%;">
+        <tr>
+            <th width="30%">Tracking Number</th>
+            <th width="30%">Title</th>
+            <th width="30%">carrier_code</th>
+        </tr>
+    <?php
+    foreach ($this->getTracks() as $track):?>
+        <tr>
+            <td width="30%"><?= $track['track_number'] ?></td>
+            <td width="30%"><?= $track['title'] ?></td>
+            <td width="30%"><?= $track['carrier_code'] ?></td>
+        </tr>
+    <?php endforeach; ?>
+</table>

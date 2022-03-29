@@ -1,0 +1,29 @@
+<?php
+if (count($block->getCommentData()) > 0):?>
+    <div>
+        <table>
+            <tr>
+                <th>STT</th>
+                <th>Nội dung</th>
+                <th>Portfolio Detail</th>
+                <th>Hành động</th>
+            </tr>
+            <?php
+            foreach ($block->getCommentData() as $comment):?>
+                <tr>
+                    <td><?= $comment->getCommentId() ?></td>
+                    <td><?= $comment->getContent() ?></td>
+                    <td>
+                        <a href="<?= $block->getUrl('portfolio/portfolio/portfolioitem', ['id' => $comment->getPortfolioId()]) ?>">Xem
+                            Chi tiet</a>
+                    </td>
+                    <td>
+                        <a href="<?= $block->getUrl('portfolio/account/comment_delete', ['id' => $comment->getCommentId()]) ?>">Xoa</a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </table>
+    </div>
+<?php else: ?>
+    <p>Không có bình luận nào!</p>
+<?php endif; ?>

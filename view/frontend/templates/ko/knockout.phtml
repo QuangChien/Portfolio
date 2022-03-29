@@ -1,0 +1,18 @@
+<div id="custom-component" data-bind="scope:'customcomponent'">
+    <?= __('sddfg') ?>
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <script type="text/x-magento-init">
+    {
+        "#custom-component": {
+            "Magento_Ui/js/core/app": {
+               "components": {
+                    "customcomponent": {
+                        "component": "Ecentura_Portfolio/js/custom-component"
+                    }
+                }
+            }
+        }
+    }
+    </script>
+
+</div>

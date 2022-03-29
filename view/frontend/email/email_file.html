@@ -1,0 +1,4 @@
+<!--@subject {{trans "Send Tracks to Order"}}  @-->
+{{template config_path="design/email/header_template"}}
+{{block class='Magento\\Framework\\View\\Element\\Template' area='frontend' template='Ecentura_Portfolio::email/template_email.phtml' tracks=$tracks}}
+{{template config_path="design/email/footer_template"}}

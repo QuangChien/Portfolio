@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+<!--    <head>-->
+<!--        <script src="Ecentura_Portfolio::js/tab_widget.js"/>-->
+<!--        <css src="Ecentura_Portfolio::css/portfolio_list.css"/>-->
+<!--    </head>-->
+    <referenceBlock name="head.additional">
+        <block class="Ecentura\Portfolio\Block\Portfolio\CustomHead" name="custom_head" template="Ecentura_Portfolio::portfolio/custom_head.phtml"/>
+    </referenceBlock>
+
+    <referenceContainer name="content">
+        <block cacheable="false" class="Ecentura\Portfolio\Block\Portfolio\PortfolioList" name="ecentura_portfolio_list"
+               template="Ecentura_Portfolio::portfolio/list.phtml">
+            <referenceBlock name="breadcrumbs">
+                <action method="addCrumb">
+                    <argument name="crumbName" xsi:type="string">Home</argument>
+                    <argument name="crumbInfo" xsi:type="array">
+                        <item name="title" xsi:type="string" translate="true">Home</item>
+                        <item name="label" xsi:type="string" translate="true">Home</item>
+                        <item name="link" xsi:type="string">/</item>
+                    </argument>
+                </action>
+
+                <action method="addCrumb">
+                    <argument name="crumbName" xsi:type="string">Portfolio List</argument>
+                    <argument name="crumbInfo" xsi:type="array">
+                        <item name="title" xsi:type="string" translate="true">Portfolio List</item>
+                        <item name="label" xsi:type="string" translate="true">Portfolio List</item>
+                    </argument>
+                </action>
+            </referenceBlock>
+        </block>
+    </referenceContainer>
+</page>

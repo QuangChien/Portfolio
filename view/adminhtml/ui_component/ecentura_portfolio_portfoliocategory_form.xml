@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">
+                ecentura_portfolio_portfoliocategory_form.ecentura_portfolio_portfoliocategory_form_data_source
+            </item>
+            <item name="deps" xsi:type="string">
+                ecentura_portfolio_portfoliocategory_form.ecentura_portfolio_portfoliocategory_form_data_source
+            </item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Portfolio Category</item>
+        <item name="config" xsi:type="array">
+            <item name="dataScope" xsi:type="string">data</item>
+            <item name="namespace" xsi:type="string">ecentura_portfolio_portfoliocategory_form_data_source</item>
+        </item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="back">
+                <url path="ecentura_portfolio/portfoliocategory/index"/>
+                <class>back</class>
+                <label translate="true">Back</label>
+            </button>
+            <button name="save">
+                <url path="ecentura_portfolio/portfoliocategory/save"/>
+                <class>primary</class>
+                <label translate="true">Save</label>
+            </button>
+        </buttons>
+    </settings>
+    <dataSource name="ecentura_portfolio_category_listing_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Ecentura\Portfolio\Model\PortfolioCategory\DataProvider</argument>
+            <argument name="name" xsi:type="string">ecentura_portfolio_portfoliocategory_form_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">portfolio_category_id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="ecentura_portfolio/portfoliocategory/save"/>
+        </settings>
+    </dataSource>
+    <fieldset name="portfolio_category">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="collapsible" xsi:type="boolean">false</item>
+                <item name="label" xsi:type="string" translate="true">Portfolio Details</item>
+                <item name="sortOrder" xsi:type="number">20</item>
+            </item>
+        </argument>
+        <field name="portfolio_category_name">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Portfolio Category Name</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">portfolio</item>
+                    <item name="dataScope" xsi:type="string">portfolio_category_name</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+    </fieldset>
+</form>

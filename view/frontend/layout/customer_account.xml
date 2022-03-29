@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="customer_account_navigation">
+            <block class="Magento\Framework\View\Element\Html\Link\Current" name="add_link_sidebar_account">
+                <arguments>
+                    <argument name="path" xsi:type="string">portfolio/account/comment</argument>
+                    <argument name="label" xsi:type="string">Comment</argument>
+                    <argument name="sortOrder" xsi:type="number">150</argument>
+                    <argument name="navigation" xsi:type="boolean">true</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

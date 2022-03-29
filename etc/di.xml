@@ -1,0 +1,65 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="ecentura_portfolio_category_listing_data_source" xsi:type="string">
+                    Ecentura\Portfolio\Model\ResourceModel\PortfolioCategory\Grid\Collection
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Ecentura\Portfolio\Model\ResourceModel\PortfolioCategory\Grid\Collection"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">portfolio_category</argument>
+            <argument name="resourceModel" xsi:type="string">Ecentura\Portfolio\Model\ResourceModel\PortfolioCategory</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="ecentura_portfolio_listing_data_source" xsi:type="string">
+                    Ecentura\Portfolio\Model\ResourceModel\Portfolio\Grid\Collection
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Ecentura\Portfolio\ReferenceImageUpload" type="Ecentura\Portfolio\Model\ImageUploader">
+        <arguments>
+            <argument name="baseTmpPath" xsi:type="string">encentura/tmp/feature</argument>
+            <argument name="basePath" xsi:type="string">encentura/feature</argument>
+            <argument name="allowedExtensions" xsi:type="array">
+                <item name="jpg" xsi:type="string">jpg</item>
+                <item name="jpeg" xsi:type="string">jpeg</item>
+                <item name="gif" xsi:type="string">gif</item>
+                <item name="png" xsi:type="string">png</item>
+            </argument>
+            <argument name="allowedMimeTypes" xsi:type="array">
+                <item name="jpg" xsi:type="string">image/jpg</item>
+                <item name="jpeg" xsi:type="string">image/jpeg</item>
+                <item name="gif" xsi:type="string">image/gif</item>
+                <item name="png" xsi:type="string">image/png</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Ecentura\Portfolio\Controller\Adminhtml\Feature\Image\Upload">
+        <arguments>
+            <argument name="imageUploader" xsi:type="object">Ecentura\Portfolio\ReferenceImageUpload</argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="ecentura_portfolio_comment_listing_data_source" xsi:type="string">
+                    Ecentura\Portfolio\Model\ResourceModel\Comment\Grid\Collection
+                </item>
+            </argument>
+        </arguments>
+    </type>
+</config>

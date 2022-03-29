@@ -1,0 +1,193 @@
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">ecentura_portfolio_listing.ecentura_portfolio_listing_data_source</item>
+            <item name="deps" xsi:type="string">ecentura_portfolio_listing.ecentura_portfolio_listing_data_source</item>
+        </item>
+        <item name="spinner" xsi:type="string">spinner_columns</item>
+        <item name="buttons" xsi:type="array">
+            <item name="add" xsi:type="array">
+                <item name="name" xsi:type="string">add</item>
+                <item name="label" xsi:type="string" translate="true">Add New Portfolio</item>
+                <item name="class" xsi:type="string">primary</item>
+                <item name="url" xsi:type="string">*/*/add</item>
+            </item>
+        </item>
+    </argument>
+    <listingToolbar name="listing_top">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="sticky" xsi:type="boolean">true</item>
+            </item>
+        </argument>
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <filters name="listing_filters" />
+
+        <massaction name="listing_massaction">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/tree-massactions</item>
+                </item>
+            </argument>
+            <action name="delete">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="type" xsi:type="string">delete</item>
+                        <item name="label" xsi:type="string" translate="true">Delete</item>
+                        <item name="url" xsi:type="url" path="ecentura_portfolio/portfolio/delete"/>
+                        <item name="confirm" xsi:type="array">
+                            <item name="title" xsi:type="string" translate="true">Delete Portfolio</item>
+                            <item name="message" xsi:type="string" translate="true">Bạn có chắc chắn muốn xóa không?</item>
+                        </item>
+                    </item>
+                </argument>
+            </action>
+        </massaction>
+
+        <paging name="listing_paging"/>
+        <exportButton name="export_button"/>
+    </listingToolbar>
+    <dataSource name="ecentura_portfolio_listing">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider</argument>
+            <argument name="name" xsi:type="string">ecentura_portfolio_listing_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">portfolio_id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
+                    <item name="update_url" xsi:type="url" path="mui/index/render"/>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="indexField" xsi:type="string">portfolio_id</item>
+                    </item>
+                </item>
+            </argument>
+        </argument>
+    </dataSource>
+    <columns name="spinner_columns">
+        <selectionsColumn name="ids">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="resizeEnabled" xsi:type="boolean">false</item>
+                    <item name="resizeDefaultWidth" xsi:type="string">55</item>
+                    <item name="indexField" xsi:type="string">portfolio_id</item>
+                </item>
+            </argument>
+        </selectionsColumn>
+
+        <selectionsColumn name="ids" sortOrder="0">
+            <settings>
+                <indexField>entity_id</indexField>
+            </settings>
+        </selectionsColumn>
+
+        <column name="portfolio_id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">textRange</item>
+                    <item name="sorting" xsi:type="string">asc</item>
+                    <item name="label" xsi:type="string" translate="true">ID</item>
+                </item>
+            </argument>
+        </column>
+
+        <column name="thumbnail" class="Ecentura\Portfolio\Ui\Component\Listing\Columns\Thumbnail">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/thumbnail</item>
+                    <item name="sortable" xsi:type="boolean">true</item>
+                    <item name="altField" xsi:type="string">store image</item>
+                    <item name="has_preview" xsi:type="string">1</item>
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Thumbnail</item>
+                    <item name="sortOrder" xsi:type="number">5</item>
+                    <item name="resizeEnabled" xsi:type="boolean">true</item>
+                    <item name="resizeDefaultWidth" xsi:type="string">200</item>
+                </item>
+            </argument>
+        </column>
+
+        <column name="client">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="editor" xsi:type="array">
+                        <item name="editorType" xsi:type="string">text</item>
+                        <item name="validation" xsi:type="array">
+                            <item name="required-entry" xsi:type="boolean">true</item>
+                        </item>
+                    </item>
+                    <item name="label" xsi:type="string" translate="true">Client</item>
+                </item>
+            </argument>
+        </column>
+
+        <column name="project">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="editor" xsi:type="array">
+                        <item name="editorType" xsi:type="string">text</item>
+                        <item name="validation" xsi:type="array">
+                            <item name="required-entry" xsi:type="boolean">true</item>
+                        </item>
+                    </item>
+                    <item name="label" xsi:type="string" translate="true">Project</item>
+                </item>
+            </argument>
+        </column>
+
+        <column name="skill">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="editor" xsi:type="array">
+                        <item name="editorType" xsi:type="string">text</item>
+                        <item name="validation" xsi:type="array">
+                            <item name="required-entry" xsi:type="boolean">true</item>
+                        </item>
+                    </item>
+                    <item name="label" xsi:type="string" translate="true">Skill</item>
+                </item>
+            </argument>
+        </column>
+
+        <column name="portfolio_category_name">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="editor" xsi:type="array">
+                        <item name="editorType" xsi:type="string">text</item>
+                        <item name="validation" xsi:type="array">
+                            <item name="required-entry" xsi:type="boolean">true</item>
+                        </item>
+                    </item>
+                    <item name="label" xsi:type="string" translate="true">Category</item>
+                </item>
+            </argument>
+        </column>
+
+        <column name="status" class="Ecentura\Portfolio\Ui\Component\Listing\Columns\Status">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="editor" xsi:type="array">
+                        <item name="editorType" xsi:type="string">text</item>
+                        <item name="validation" xsi:type="array">
+                            <item name="required-entry" xsi:type="boolean">true</item>
+                        </item>
+                    </item>
+                    <item name="label" xsi:type="string" translate="true">Status</item>
+                </item>
+            </argument>
+        </column>
+
+        <actionsColumn name="actions" class="Ecentura\Portfolio\Ui\Component\Listing\Columns\PortfolioActions" sortOrder="200">
+            <settings>
+                <indexField>portfolio_id</indexField>
+            </settings>
+        </actionsColumn>
+    </columns>
+
+</listing>

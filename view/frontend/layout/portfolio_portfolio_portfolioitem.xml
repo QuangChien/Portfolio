@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<page layout="2columns-right" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <script src="Ecentura_Portfolio::js/portfolio_item.js"/>
+    </head>
+    <referenceContainer name="content">
+        <block cacheable="false" class="Ecentura\Portfolio\Block\Portfolio\PortfolioItem" name="ecentura_portfolio_item"
+               template="Ecentura_Portfolio::portfolio/item.phtml">
+            <referenceBlock name="breadcrumbs">
+                <action method="addCrumb">
+                    <argument name="crumbName" xsi:type="string">Home</argument>
+                    <argument name="crumbInfo" xsi:type="array">
+                        <item name="title" xsi:type="string" translate="true">Home</item>
+                        <item name="label" xsi:type="string" translate="true">Home</item>
+                        <item name="link" xsi:type="string">/</item>
+                    </argument>
+                </action>
+
+                <action method="addCrumb">
+                    <argument name="crumbName" xsi:type="string">Portfolio List</argument>
+                    <argument name="crumbInfo" xsi:type="array">
+                        <item name="title" xsi:type="string" translate="true">Portfolio List</item>
+                        <item name="label" xsi:type="string" translate="true">Portfolio List</item>
+                        <item name="link" xsi:type="string">../../../portfoliolist/portfoliolist</item>
+                    </argument>
+                </action>
+
+                <action method="addCrumb">
+                    <argument name="crumbName" xsi:type="string">Portfolio Item</argument>
+                    <argument name="crumbInfo" xsi:type="array">
+                        <item name="title" xsi:type="string" translate="true">Portfolio Item</item>
+                        <item name="label" xsi:type="string" translate="true">Portfolio Item</item>
+                    </argument>
+                </action>
+            </referenceBlock>
+        </block>
+        <block cacheable="false" class="Ecentura\Portfolio\Block\Portfolio\PortfolioComment" name="ecentura_portfolio_comment"
+               template="Ecentura_Portfolio::portfolio/comment.phtml" />
+
+        <referenceContainer name="sidebar.additional">
+            <referenceBlock name="catalog.compare.sidebar" remove="true"/>
+            <referenceBlock name="wishlist_sidebar" remove="true"/>
+            <block class="Ecentura\Portfolio\Block\Portfolio\PortfolioInfo" name="ecentura.portfolio.info"
+                   template="Ecentura_Portfolio::portfolio/portfolio_info.phtml">
+            </block>
+        </referenceContainer>
+    </referenceContainer>
+</page>

@@ -1,0 +1,8 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Ecentura_Portfolio::css/owl.carousel.css"/>
+        <css src="Ecentura_Portfolio::css/portfolio_item.css"/>
+        <script src="Ecentura_Portfolio::js/tab_widget.js"/>
+        <css src="Ecentura_Portfolio::css/portfolio_list.css"/>
+    </head>
+</page>

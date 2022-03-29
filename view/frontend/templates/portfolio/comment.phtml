@@ -1,0 +1,40 @@
+<hr>
+<div class="portfolio_comment">
+    <h3>Comment</h3>
+    <?php
+    //nếu số comment > 0
+    if(count($block->getCommentData()) > 0):?>
+    <!-- lặp   -->
+    <?php foreach ($block->getCommentData() as $comment):?>
+        <div style="margin-bottom: 30px">
+            <div style="display: flex; margin-bottom: 8px">
+                <img style="border-radius: 50%" src="https://secure.gravatar.com/avatar/58690c477e4feaf5c76572716abb2545?s=60&d=mm&r=g" alt="">
+                <div style="margin-left: 6px; display: flex; align-items: center">
+                    <div>
+                        <h4 style="margin: 0 0 4px;"><?= $comment->getCustomerLastname() . ' ' . $comment->getCustomerFirstname()?></h4>
+                        <span><?= $comment->getCreatedAt() ?></span>
+                    </div>
+                </div>
+            </div>
+            <div class="content">
+                <?= $comment->getContent() ?>
+            </div>
+        </div>
+    <?php endforeach; ?>
+    <?php else: ?>
+        <p>Chua co binh luan nao!</p>
+    <?php endif; ?>
+
+    <?php
+        //nếu đã login thì hiển thị form đăng nhập
+        if($block->checkLogin() == true):?>
+            <form action="<?= $this->getUrl('portfolio/portfolio/commentsave') ?>" method="POST">
+                <input type="hidden" name="portfolio_id" value="<?= $block->getPortfolioId() ?>">
+                <textarea rows="5" name="content" placeholder="Nhập nội dung..."></textarea>
+                <button>Gửi bình luận</button>
+            </form>
+    <?php else: ?>
+    <!--   chưa đăng nhập     -->
+    <p style="color: red">Đăng nhập để bình luận!</p>
+    <?php endif; ?>
+</div>
